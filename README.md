@@ -5,6 +5,8 @@ Integrate Shelly 1PM into Victron Energies Venus OS
 With the scripts in this repo it should be easy possible to install, uninstall, restart a service that connects the Shelly 1PM to the VenusOS and GX devices from Victron.
 Idea is inspired on @fabian-lauer project linked below.
 
+The project is forked from https://github.com/vikt0rm/dbus-shelly-1pm-pvinverter.
+Only Change is that it crashes on exception so the service can be restarted automatically on failure.
 
 
 ## Inspiration
