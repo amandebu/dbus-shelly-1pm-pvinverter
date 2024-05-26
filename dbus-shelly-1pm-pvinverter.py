@@ -188,7 +188,7 @@ class DbusShelly1pmService:
        self._lastUpdate = time.time()
     except Exception as e:
        logging.critical('Error at %s', '_update', exc_info=e)
-
+       raise
     # return true, otherwise add_timeout will be removed from GObject - see docs http://library.isr.ist.utl.pt/docs/pygtk2reference/gobject-functions.html#function-gobject--timeout-add
     return True
 
