@@ -63,6 +63,8 @@ class DbusShelly1pmService:
     # add _update function 'timer'
     gobject.timeout_add(250, self._update) # pause 250ms before the next request
 
+    gobject.timeout_add(2000, self._check_status) # check if we are still getting new data
+      
     # add _signOfLife 'timer' to get feedback in log every 5minutes
     gobject.timeout_add(self._getSignOfLifeInterval()*60*1000, self._signOfLife)
 
@@ -137,6 +139,10 @@ class DbusShelly1pmService:
     logging.info("Last '/Ac/Power': %s" % (self._dbusservice['/Ac/Power']))
     logging.info("--- End: sign of life ---")
     return True
+
+  def _check_status(self):
+    if self._lastUpdate+10<time.time():
+      os._exit()
 
   def _update(self):
     try:
